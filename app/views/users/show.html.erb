@@ -1,0 +1,27 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<h1>Welcome, <%= current_user.name %></h1>
+
+
+<form action='/secrets' method='post'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    New secret:
+    <input type='text' name='secret[content]' />
+    <br><br>
+    <input id="button" type='submit' value='Create secret' />
+</form>
+
+<h3> Secrets </h3>
+<% @individual_secrets.each do |secret| %>
+    <%= secret.content %> 
+    <a href="/secrets/<%= secret.id %>" data-method="delete"> <button> Delete </button> </a>
+    <br>
+<% end %>
+
+<h3> Secrets Liked </h3>
+<% @secrets_liked.each do |secret| %>
+    <%= secret.content %> 
+    <br>
+    <%= secret.likes.count %> likes
+    <br><br>
+<% end %>

@@ -1,0 +1,43 @@
+vagrant ssh
+
+# access the postgres shell
+vagrant@vagrant-ubuntu-trusty-64: ~$ sudo su postgres -c psql
+# create a user
+postgres=# CREATE ROLE vagrant SUPERUSER LOGIN;
+# exiting the shell
+postgres=# \q
+
+rails new NinjaSecrets --database=postgresql --skip-test-unit
+
+Gemfile
+
+gem 'pg' #should already be in your gemfile
+gem 'bcrypt', '~> 3.1.7' #version number might be different, use recommended version number
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+end
+
+bundle install
+rails generate rspec:install
+
+Rails helper
+
+require 'factory_girl_rails'
+config.include FactoryGirl::Syntax::Methods
+
+
+rails g controller Sessions new --no-controller-specs --no-view-specs
+
+User.find_by_email('name1@name1.com').try(:authenticate, 'password1')
+
+
+rails g model Secret content:text user:references
+rails g model Like user:references secret:references
+
+rake db:migrate
+
+rails g controller Secrets index
+
+rails g controller Likes 

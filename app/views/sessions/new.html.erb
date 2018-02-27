@@ -1,0 +1,17 @@
+<h1>Login page</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<form action='/sessions/create' method='post'>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Email:
+    <input type='text' name='user[email]' />
+    <br><br>
+    Password:
+    <input type='text' name='user[password]' />
+    <br><br>
+    <input id="button" type='submit' value='Login' />
+</form>
+<br><br>
+
+<a href="/users/new"> <button> Not our user yet? </button></a>
+
