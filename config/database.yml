@@ -84,7 +84,7 @@ test:
 production:
   <<: *default
   database: NinjaSecrets_production
-  username: vagrant
+  username: ubuntu
   password: <%= ENV['NINJASECRETS_DATABASE_PASSWORD'] %>
 
-# NOTE TO SELF: updated username to username: vagrant from NinjaSecrets
+# NOTE TO SELF: updated username to username: ubuntu from NinjaSecrets
