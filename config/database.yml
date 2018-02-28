@@ -17,12 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: vagrant
+  username: ubuntu
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-  # NOTE TO SELF: remember to paste username: vagrant in default
+  # NOTE TO SELF: remember to paste username: ubuntu in default
 
 development:
   <<: *default
